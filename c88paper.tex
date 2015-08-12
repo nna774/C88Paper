@@ -3,7 +3,7 @@
 %% \Setlength{\textwidth}{17cm}
 %% \setlength{\textheight}{24cm}
 %% \setlength{\leftmargin}{-0.5cm}
-%% \setlength{\topmargin}{-4cm}
+%% \setlength{\topmargin}{-2cm}
 %% \setlength{\oddsidemargin}{0cm}
 %% \setlength{\evensidemargin}{0cm}
 
@@ -38,35 +38,29 @@
 ブログ\footnote{\url{https://nna774.net/}}のいつもの記事とどう違うんだ、って話はあるけれど、
 コミケで頒布してみる って事にはそれはそれで意味があるんじゃないのかな、ということで。
 
-\section{Pietとは}
+\section{Piet}
+\subsection{Pietとは}
 Pietというお絵かきプログラミング言語があります。
-Wikipediaによると~\cite{wppiet}、
+Wikipediaによると(一部略)~\cite{wppiet}、
 \begin{quotation}
-Piet（ピエト）は、プログラミング言語であり、難解プログラミング言語のひとつである。
-Ook! などのいくつかの難解プログラミング言語を開発した David Morgan-Mar がピエト・モンドリアンの作品に影響を受けて考案した言語で、文字ではなく色を組み合わせて記述する。 サンプルソースコード[1]を一見すると、抽象画のように見える。
+Pietは、難解プログラミング言語のひとつである。
+いくつかの難解プログラミング言語を開発した David Morgan-Mar がピエト・モンドリアンの作品に影響を受けて考案した言語で、
+文字ではなく色を組み合わせて記述する。 ソースコードを一見すると、抽象画のように見える。
 \end{quotation}
+とまぁそんな感じで、紙面の都合もあるしPietについては各自調べてください。
+うちのサークル\footnote{この場合のサークルは大学のサークルのほう。KMC、京大マイコンクラブです。以下出てくるサークルも全部こっち。}の部員が書いたおそらく現時点で日本語資料の中で一番わかりやすいPietについての資料をご覧いただくと便利です。
+「Pietのエディタを作った話\footnote{\url{http://www.slideshare.net/KMC_JP/piet-46068527}. ここに出てくるエディタは現在クローズドで、部員にしか配られていない。需要があればビルド済みのものは公開してもいい とは言っているが、できればOSSにして欲しい……。世界に対する損失だ。}」on SlideShare.
 
-aaaa\footnote{もへもへ}aaamimimi
-\begin{itemize}
-\item \url{http://ossipedia.ipa.go.jp/ipafont/}
-\end{itemize}
+\subsection{テストツールを書く。}
+こんなスライドが書かれるぐらいなので、うちのサークルでPietを書く(描く？)のが流行っています(わたしは手では全然書いていませんが……)。
+部員が手でPietを書いて手でそれが正しく動いているのか適当に入力を与えてテストしているのを見て、
+せめてテストぐらいは楽にできたらいいな、という考えから、テストツールを書きました\footnote{\url{https://github.com/nna774/piet-testutils}}
+\footnote{というのを適当に書いたのがブログの\url{https://nna774.net/blog/2015/07/08/piet.html}の記事。}。
+これがすごくバギーで、全然他の人に使われていないのだけれど、これのお陰で自動生成がだいぶ助かっている……。
 
-\section{papa}
-huhuhu
-pap{\tt xelatex}huhu
-
-\begin{lstlisting}[frame=shadowbox]
-xelatex foo.tex
-\end{lstlisting}
-
-\newpage
-
-Huhuhuh、
-にほんご\footnote[42]{おなかすいた}。
-
-
-footnote\footnote{\url{http://poaaaaaaaaaaaaaa}}
-
+\subsection{Pietを生成する。}
+Pietの言語仕様を見てみれば、こんなのはまともに手で書いていられないことがすぐにわかります。
+まず実行される命令列を擬似言語のような形で書いて、それを頑張って画像に落としていくようにみんなすぐになります$^{[要出典]}$。
 
 \printbibliography 
 
