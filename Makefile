@@ -1,7 +1,10 @@
 all: pdf
 
 pdf:
-	xelatex c88paper.tex
+	xelatex c88paper
+	bibtex c88paper
+	xelatex c88paper
+	xelatex c88paper
 
 
 .PHONY: clean

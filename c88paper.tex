@@ -1,6 +1,6 @@
 \documentclass[twocolumn,8pt,b5paper]{extarticle}
 
-%% \setlength{\textwidth}{17cm}
+%% \Setlength{\textwidth}{17cm}
 %% \setlength{\textheight}{24cm}
 %% \setlength{\leftmargin}{-0.5cm}
 %% \setlength{\topmargin}{-4cm}
@@ -16,38 +16,34 @@
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{verbatim}
+\usepackage{biblatex}
+\addbibresource{ref}
 \usepackage{myjapanese}
 
 %\usepackage{endnotes}
 %\let\footnote=\endnote
 \newcommand{\vs}{\vspace{\baselineskip}}
 
-\title{uoaaaaaaaaaaaa}
+\title{Pietのコード自動生成}
 \author{NoNamea 774}
 
 \begin{document}
 \maketitle
 
-\section{はじめに}
-\subsection{payonn}
-aaa
-\begin{itemize}
-\item \url{http://miktex.org/}
-\item \url{http://www.ms.u-tokyo.ac.jp/~abenori/mycreate/}
-\end{itemize}
+\section{なぜこんなものを……}
+ここのサークルの主がコミケに申し込むというので(初サークル参加)、
+とりあえず何か出してみたいなぁ(初サークル参加)と思って「じゃあペーパー書いてみます」と言ったのが2月の中旬。
+これを書き始めたのが8/12。反省している。出ない神ペーパーより出る謎ペーパー、ということで書いています。
+ブログ\footnote{\url{https://nna774.net/}}のいつもの記事とどう違うんだ、って話はあるけれど、
+コミケで頒布してみる って事にはそれはそれで意味があるんじゃないのかな、ということで。
 
-\subsection{poeeen}
-hiiii
-\begin{lstlisting}[frame=single]
-\documentclass{article}
-
-\usepackage{xltxtra}
-\setmainfont{IPAPMincho}
-\setsansfont{IPAPGothic}
-\setmonofont{IPAGothic}
-\XeTeXlinebreaklocale "ja"
-
-\end{lstlisting}
+\section{Pietとは}
+Pietというお絵かきプログラミング言語があります。
+Wikipediaによると~\cite{wppiet}、
+\begin{quotation}
+Piet（ピエト）は、プログラミング言語であり、難解プログラミング言語のひとつである。
+Ook! などのいくつかの難解プログラミング言語を開発した David Morgan-Mar がピエト・モンドリアンの作品に影響を受けて考案した言語で、文字ではなく色を組み合わせて記述する。 サンプルソースコード[1]を一見すると、抽象画のように見える。
+\end{quotation}
 
 aaaa\footnote{もへもへ}aaamimimi
 \begin{itemize}
@@ -64,11 +60,14 @@ xelatex foo.tex
 
 \newpage
 
-huhuhuh、
+Huhuhuh、
 にほんご\footnote[42]{おなかすいた}。
 
 
 footnote\footnote{\url{http://poaaaaaaaaaaaaaa}}
+
+
+\printbibliography 
 
 \vs
 \hrule
