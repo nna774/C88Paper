@@ -1,0 +1,18 @@
+% myjapanese.sty
+\RequirePackage{xltxtra}
+\def\en#1{{\engrm#1}} % 欧文フォントで出力
+% 日本語を含む段落を行分割するための設定
+\XeTeXlinebreaklocale "ja"
+\XeTeXlinebreakskip=0pt plus 1pt minus 0.1pt
+\XeTeXlinebreakpenalty=0
+% 半角分戻る
+\def\<{\@ifstar{\zx@hwback\nobreak}{\zx@hwback\relax}}
+\def\zx@hwback#1{\leavevmode#1\hskip-.5em\relax}
+% 簡易レイアウト設定
+\RequirePackage[scale=0.8]{geometry}
+\RequirePackage{indentfirst}
+\RequirePackage{setspace}
+\setstretch{1.3}
+\parindent=1em
+
+% thanks http://zrbabbler.sp.land.to/xelatex.html
