@@ -95,53 +95,33 @@ Pietの言語仕様を見てみれば\footnote{Pietの言語仕様をよく理�
 それを組み合わせてプログラムを構成するようにした。 それによって、置いていく際の大きさの予測が簡単になり、 
 また、これが大事なのですが、交差を実装することができるようになった。 以下のようにすれば、交差が作れるのは明らかであろうと思います 
 \footnote{Pietの仕様に十分詳しければ。ごめんなさいごめんなさい。} 
-\footnote{\href{https://github.com/nna774/piet-automata/blob/master/piet/cross.png}{piet/cross.png}} (5x5で示してある。■が黒マス、□が白マス、oが好きな色)。
+\footnote{\href{https://github.com/nna774/piet-automata/blob/master/piet/cross.png}{piet/cross.png}} (5x5で書いています)。
 
 \hfil\fbox{
-\begingroup
-\renewcommand{\arraystretch}{0.6}
-\begin{tabular}{c@{}c@{}c@{}c@{}c} 
-■ & ■ & □ & ■ & ■\\
-■ & ■ & □ & ■ & ■\\
-□ & □ & o & □ & □\\
-■ & ■ & □ & ■ & ■\\
-■ & ■ & □ & ■ & ■
-\end{tabular}
-\endgroup
+\includegraphics[width=2cm,clip]{images/cross.png}
 }\hfil
 
 ここにIfとGotoが入れば、チューリング完全となります。
 Ifについては、`not'、`pointer'と連続して実行することによって、
 スタックの先頭の値が0でないなら何もせず、0ならば進む向きを時計回りに90度回す事ができます。
 それによって、以下の様なものを作ることによって、Jump Equal Zeroのようなものが作れるので、それを使います
-\footnote{\href{https://github.com/nna774/piet-automata/blob/master/piet/notbranch.png}{piet/notbranch.png}}
-(xyでnot、yzでpointerとなるような色)。
+\footnote{\href{https://github.com/nna774/piet-automata/blob/master/piet/notbranch.png}{piet/notbranch.png}}。
 
 \hfil\fbox{
-\begingroup
-\renewcommand{\arraystretch}{0.6}
-\begin{tabular}{c@{}c@{}c@{}c@{}c} 
-■ & ■ & ■ & ■ & ■\\
-■ & ■ & ■ & ■ & ■\\
-x & y & z & □ & □\\
-■ & ■ & □ & ■ & ■\\
-■ & ■ & □ & ■ & ■
-\end{tabular}
-\endgroup
+\includegraphics[width=2cm,clip]{images/jez.png}
 }\hfil
 
-これができれば、あとはgotoですが、うまい感じに繋いでやって、プログラムポインタを誘導するだけでできます。
-以下の様なパーツたちを作ればできます……と思ったけど紙面の都合上レポジトリの場所を指し示すだけに留めます
-\footnote{小さくてごめんなさい。dot2dotで拡大できるもので見て下さい……。Windowsフォトビューワーでいつも見ています。}(赤と青のドットは、管理のための飾りです)。
+これができれば、あとはgotoですが、うまい感じに繋いでやって、プログラムポインタを誘導するだけでできます。 
+以下の様なパーツたちを作ればできます。ファイル名は、レポジトリでの同じ意味で使われてる画像です。
 
 \begin{itemize}
 \setlength{\parskip}{0cm}
 \setlength{\itemsep}{0cm}
 \item \href{https://github.com/nna774/piet-automata/blob/master/piet/nop\_h.png}{piet/nop\_h.png} 左から来たのをそのまま右へ(or 逆)。
 \item \href{https://github.com/nna774/piet-automata/blob/master/piet/nop\_v.png}{piet/nop\_v.png} 上から来たのをそのまま下へ(or 逆)。
-\item \href{https://github.com/nna774/piet-automata/blob/master/piet/curve5.png}{piet/curve5.png} 上から入り回転して左に出る。
-\item \href{https://github.com/nna774/piet-automata/blob/master/piet/curve6.png}{piet/curve6.png} 右から入り回転して上に出る。
-\item 他にも回転があるけど省略。反時計周りに回るときは、`push 3'の後`pointer'を呼んでやらないといけないので少しめんどくさい。
+\item \href{https://github.com/nna774/piet-automata/blob/master/piet/curve5.png}{piet/curve5.png} 上から入り回転して左に出る。\includegraphics[width=1cm,clip]{images/curve5.png}
+\item \href{https://github.com/nna774/piet-automata/blob/master/piet/curve7.png}{piet/curve7.png} 左から入り回転して上に出る。\includegraphics[width=1cm,clip]{images/curve7.png}
+\item 他にも同じような回転がある。
 \item \href{https://github.com/nna774/piet-automata/blob/master/piet/join.png}{piet/join.png} 左、下からを合流して右へ。
 \item \href{https://github.com/nna774/piet-automata/blob/master/piet/rjoin.png}{piet/rjoin.png} 右、下からを合流して上へ。
 \item \href{https://github.com/nna774/piet-automata/blob/master/piet/ljoin.png}{piet/ljoin.png} 左、下からを合流上へ。
@@ -157,13 +137,37 @@ JumpEqualEeroやcurveシリーズ、joinを使ってそこに誘導していく�
 最初からn番目のジャンプ系命令で使う通路を、上からn番目であると決め打ちしてしまうことで、
 通路が重なったりすることを考えたりしなくて済むので、必要以上に縦長になってしまう可能性はあれど、生成は楽になります。
 \url{https://github.com/nna774/piet-automata/blob/07d387/app.js#L272-L366}のあたりです。
-\footnote{せめてコンパイル後のPietを載せれたらまだわかりやすいかと思うのですが、白黒で……。}。
-現状ある程度いいのが生成されますが、人間には明らかな変形で小さくできるような時もあったりするような感じです
+一枚例を入れておきます。
+\begin{lstlisting}[frame=single]
+INN
+PUSH 1
+DUP
+ADD
+MOD
+JEZ zero
+PUSH 1
+OUTN
+HALT
+LABEL zero
+PUSH 1
+NOT
+OUTN
+HALT
+\end{lstlisting}
+こんな感じのコードが生成されます。
+\includegraphics[width=6cm,clip]{images/even-or-odd.png}\\
+二本横向きの線が見えると思いますが、上がメインの命令列で、
+下のほうが、ジャンプの時の通路です。うーんわかりづらい……。
+
+現状ある程度いいのが生成されますが、人間には明らかな変形で小さくできるような時もあったりするような感じです 
 \footnote{例を載せるのムズイから、\url{https://twitter.com/nonamea774/status/622858091365711872}とかを見てください。セルフリプライで解説してるやつです。}。
 
-
 \section{あとがきの国}
-とまぁだいたいこんな感じで生成できるようなものを作っています。レポジトリは\href{https://github.com/nna774/piet-automata/}{nna774/piet-automata/}にあります。
+とまぁだいたいこんな感じで生成できるようなものを作っています。
+レポジトリは\href{https://github.com/nna774/piet-automata/}{nna774/piet-automata/}にあります。
+今レポジトリのREADMEに書かれている命令セット(最近サークルではPasって呼ばれている。Pascalとかぶってることに最近気づいた)
+でも、かなり楽になってるとはいえ、Ifをそのまま書いたたりできないし、だいぶつらいのでこれに落とす上位言語を書きたいなぁと最近は思っています。
+
 
 \printbibliography 
 
@@ -172,7 +176,7 @@ JumpEqualEeroやcurveシリーズ、joinを使ってそこに誘導していく�
 %\theendnotes
 
 \null\vfill
-\section*{\includegraphics[width=\baselineskip,clip]{glider.png} 奥付}
+\section*{\includegraphics[width=\baselineskip,clip]{images/glider.png} 奥付}
 \hrule\vskip.5mm\hrule\vskip3mm
 \begin{tabular}{ll}
 2015/8/15 & 初版発行\\
